@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/nienluan/htbldt/controller/PersonController.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/dao/DienThoaiDaoImpl.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/dao/PhanHeDtDaoImpl.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/dao/TaiKhoanDao.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/dao/TaiKhoanDaoImpl.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/service/TaiKhoanService.java=UTF-8
+encoding//src/main/java/com/nienluan/htbldt/service/TaiKhoanServiceImpl.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/chitietsanpham.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/contact.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/dangky.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/dangnhap.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/directpage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/upload.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/viewupload.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/viewuploadimage.jsp=UTF-8
