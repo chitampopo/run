@@ -1,0 +1,168 @@
+
+New AR:  
+	View AR |  AR without Proprietary
+History |  States |  Assignment |  Timetracking
+Add Attachment
+AR Text Search  |  More  |  CARES Home
+Assistance Request  1-5961187
+
+Customer Ticket N/A
+
+Short           Db.cache File Extension of a DNS View allows only one line
+Description     
+
+Current         20-Oct-15 10:20 AM Defect VQIP00042369 is scheduled for 8.0PR5
+Summary         
+
+State           In Progress : Referred to Development/Under Investigation
+
+Outage          No                        
+Severity        3
+Priority        3
+
+Service Request Remote Technical Support
+Request Type    Defect
+Sub-Type        Software
+Category        Software
+Internal        No
+
+Ask Alcatel-Lucent
+
+Product
+
+Product         VitalQIP
+Version         8.0 PR3
+
+Change Request
+
+Vendor Referral VQIP00042369 : AssignedToVersionOne
+Release Number  ----
+Version         ----                      Sched Version    Patch Release 5
+Created         06-Oct-2015 16:46 GMT     Submitter       cindyvogler
+Last Modified   16-Oct-2015 14:17 GMT     Modified By     cindyvogler
+
+Product Location
+
+Site            London GB - 1 Cabot Square
+Instance        Credit Suisse- UK VitalQIP : In Service
+Site Company    Credit Suisse First Boston
+City            London
+Country         United Kingdom
+
+Contact
+
+Name            Andrew Jirat-Wasiutynski
+Company         Credit Suisse First Boston
+Phone           44 207 883 6111           Email           andrew.jw@credit-suisse.com
+Request Method  AR Copy
+
+Dates
+
+Occurred        06-Oct-2015 16:10 GMT     Time now        21-Oct-2015 07:12 GMT
+Reported        06-Oct-2015 16:10 GMT     AR Created      06-Oct-2015 16:10 GMT
+Service Start   06-Oct-2015 16:10 GMT
+Responded       06-Oct-2015 16:10 GMT     Respond Target  07-Oct-2015 08:00 GMT  SA - Calculated
+Restored        -- --- ----               Restore Target  -- --- ----            SA - None
+Resolved        -- --- ----               Resolve Target  03-Apr-2016 16:10 GMT  SA - Calculated
+Closed          -- --- ----          
+Last Modified   20-Oct-2015 14:47 GMT     Modified By     cindyvogler
+
+Entitlement
+
+Agreement       206849
+Covered Service RTS-A 24x7 (Vital, NAR Customer, Global site)
+Entitled        OOH RTS (Billing Option Accepted)
+Script          This request for service was received outside the .. [More]
+
+People
+
+Owner           TEC-IPP-VITALQIP-US : keithgross
+Assignee        TEC-IPP-VITALQIP-US : keithgross
+Submitter       keithgross
+
+Description
+
+Steps to reproduce:
+1. Get a current named.root of the Internet root servers, starting with:
+.                        3600000      NS    A.ROOT-SERVERS.NET.
+A.ROOT-SERVERS.NET.      3600000      A     198.41.0.4
+A.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:ba3e::2:30
+;
+; FORMERLY NS1.ISI.EDU
+;
+.                        3600000      NS    B.ROOT-SERVERS.NET.
+B.ROOT-SERVERS.NET.      3600000      A     192.228.79.201
+B.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:84::b
+;
+; FORMERLY C.PSI.NET
+;
+.                        3600000      NS    C.ROOT-SERVERS.NET.
+C.ROOT-SERVERS.NET.      3600000      A     192.33.4.12
+C.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2::c
+;
+; FORMERLY TERP.UMD.EDU
+;
+.                        3600000      NS    D.ROOT-SERVERS.NET.
+D.ROOT-SERVERS.NET.      3600000      A     199.7.91.13
+D.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2d::d
+;
+; FORMERLY NS.NASA.GOV
+;
+.                        3600000      NS    E.ROOT-SERVERS.NET.
+E.ROOT-SERVERS.NET.      3600000      A     192.203.230.10
+;
+; FORMERLY NS.ISC.ORG
+
+Normally, this is what customers would cut and paste into the db.cache file
+extension of a DNS server. But even a minimal one for one internal root server
+would need at least two lines for an NS record and an A record.
+
+2. However, DNS Views can have a view-specific db.cache. To see this, go into the
+VitalQIP GUI and click DNS -- Zones -- Add -- Add DNS View. Enter a name such as
+"Internal" and a Match-Clients list such as 10.0.0.0/8. At the bottom, set "Create
+db.cache" to True. Cut and paste the Internet named.root to the db.cache File
+Extension. Save.
+
+See that the text is compressed into just one line and incomplete.
+
+3. Do DNS Generation preview. The internal/db.cache is incorrect.
+
+Work-around: put a $INCLUDE statement into the db.cache file extension of the View:
+a. Click DNS -- Managed Files (for 8.0; Infrastructure- Managed files in 8.1)
+b. Click Add -- Add Managed File. Give a name such as "named.root". Cut and paste
+the contents. Save. Associate this with the same DNS server that is a assiged to a
+zone under the DNS View. Save.
+c. Go back to the DNS View Profile. In the db.cache file extension, put the line
+$INCLUDE /opt/qip/named/managedFiles/named.root (or whatever the correct full path
+is). Save.
+d. When DNS Generation is done, the db.cache will be generated with the $INCLUDE
+statement, and when DNS reloads it, it will read in the correct data from the
+managed file.
+
+Note: Customer reported the issue in 8.0PR3; I reproduced it in both 8.0PR4 and
+8.1.
+
+Investigation Log
+
+1.  06-Oct-2015 16:10 GMT                                             keithgross
+
+Update to Current Summary: 6-Oct-15 12 noon There are no known defects/RFEs for
+either issue. I did testing in both 8.0 and 8.1. Opening two new tickets.
+
+2.  06-Oct-2015 16:20 GMT                                             keithgross
+
+Update to Current Summary: 6-Oct-15 12:10 AM Separate issue from 1-5956335
+
+3.  20-Oct-2015 14:25 GMT                                             keithgross
+
+Update to Current Summary: 20-Oct-15 10:20 AM Defect VQIP00042369 is scheduled for
+8.0PR5
+
+End of Assistance Request  1-5961187
+
+New AR:  
+	View AR |  AR without Proprietary |  OLCS
+History |  States |  Assignment |  Timetracking
+View Attachments |  Add Attachment
+AR Text Search  |  More  |  CARES Home
+
